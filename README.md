@@ -1,14 +1,16 @@
-QSAP
-==========================================
+# QSAP
 QSAP_version_1.0  
-An automatic annotation pipeline for fast annotation and classification of QS-like sequences from sequencing data.  
-Author: DAI Chunxiao.  
-Email: 2446378845\@qq.com  
+An automatic annotation pipeline for fast annotation and classification of QS-like sequences from sequencing data.
 
-perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [conda|/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h
+Author: DAI Chunxiao.
 
-Options
-==========================================
+Email: 2446378845\@qq.com.
+
+# Options
+```sh
+$ perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [conda|/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h
+```
+
 General options:  
  --input(-i)	Input files list,necessary.  
  --output(-o)	Output files directory, default current directory.  
