@@ -28,13 +28,15 @@ Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell
 
 **Hmmscan parameters:**  
  &emsp; `-G` &emsp;&emsp;&emsp;&emsp;&ensp;&ensp;&ensp; Default option for model-specific thresholding. if `-G`, use profile's GA gathering cutoffs to set all thresholding.  
- &emsp;`--hmmscanopt`&emsp; Other options in Hmmscan, the "-" need to be "/-". if `--hmmscanopt`, `-G` will not be allowed.  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Inalterable options: `-o`; `--tblout`; `--noali`. Alterable options: `-E`; `-T`; `--domE`; `--domT`.  
+ &emsp;`--hmmscanopt`&emsp;&ensp;Other options in Hmmscan, the "-" need to be "/-". if `--hmmscanopt`, `-G` will not be allowed.  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Inalterable options: `-o`; `--tblout`; `--noali`.  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Alterable options: `-E`; `-T`; `--domE`; `--domT`.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `--hmmscanopt /-E 0.01 /--domE 0.01`;`--hmmscanopt /-T 30 /--domT 30`.
 
 **Salmon parameters:**  
   &emsp;`--Kmers(-k)` &emsp;&ensp;Kmers for building salmon index, default value is 31.  
-  &emsp;`--salmonopt`&emsp;&ensp; Other options.in salmon quant, the "-" need to be "/-". Inalterable options: `--validateMappings`;`-i`;`-l`;`--meta`;`-1`;`-2`;`-o`.  
+  &emsp;`--salmonopt`&emsp;&ensp; Other options.in salmon quant, the "-" need to be "/-".  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Inalterable options: `--validateMappings`;`-i`;`-l`;`--meta`;`-1`;`-2`;`-o`.  
  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `--saloptions /--hardFilter /--recoverOrphans`.
 
 **Others:**  
@@ -44,12 +46,12 @@ Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell
 
 # Before start
 ## Software involved in this pipeline  
-1. diamond v2.0.15.153: Buchfink B, Reuter K, Drost HG, \"Sensitive protein alignments at tree-of-life scale using DIAMOND\", *Nature Methods* **18**, 366–368 (2021). [doi:10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Github:]()  
-2. HMMER 3.3.2: [Github:](http://hmmer.org/)[Github:](https://github.com/EddyRivasLab/hmmer)
-3. Seqkit 2.2.0: [Github:](http://hmmer.org/)[Github:](http://hmmer.org/)
+1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, \"Sensitive protein alignments at tree-of-life scale using DIAMOND\", *Nature Methods* 18, 366–368 (2021). [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
+2. HMMER 3.3.2: [DOI:](http://hmmer.org/)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
+3. Seqkit 2.2.0: [DOI:](http://hmmer.org/)&emsp;[Git-hub:](http://hmmer.org/).
 ### Installation: 
 default: installed by conda.  
-if `-p` \[your/install/path/\] 
+if `-p` \[your/install/path/\].  
 ### notice:
 
 ## Input files list
