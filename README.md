@@ -2,12 +2,48 @@
 
 # Introduction
 **QSAP version 1.0**    
-&ensp;Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP is an automatic annotation pipeline for fast annotation and classification of QS-related sequences from sequencing data.** The [QSP database]()
+&ensp;Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP** is an automatic annotation pipeline for fast annotation and classification of **QS-related sequences** from sequencing data. This pipeline is constructed based on 809721 protein sequences from the [QSP database](https://github.com/chunxiao-dcx/QSP).  
 Author: DAI Chunxiao.  
 Email: 2446378845\@qq.com.  
 
 # Workflow
 ![image](https://github.com/chunxiao-dcx/QSP/blob/main/QSAPpipeline.png)
+
+# Before start
+To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
+### clone source code
+`git clone `
+## involved Software 
+### Software:   
+1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
+2. **HMMER 3.3.2**: Potter SC, Luciani A, Eddy SR, Park Y, 
+Lopez R, Finn RD,HMMER web server: 2018 update,*Nucleic Acids Res*.[DOI: 10.1093/nar/gky448](http://doi.org/10.1093/nar/gky448)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
+3. **SeqKit 2.2.0**: 
+W Shen, S Le, Y Li\*, F Hu\*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).
+### notice:
+The copyrights of the involved software belong to their original developers.  
+### Installation:  
+**Default:**
+     Installed by conda, and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
+**if `-p \[your/install/path/\]`:**  
+
+##  Laguage used in QSAP
+QSAP is writed using Perl language, and used the following Module from [CPAN (Comprehensive Perl Archive Network)](www. cpan.org).
+1. 
+## Prepare your input files list [necessary]
+Input file list is nessasery for QSAP. The list contained 
+
+test.fasta |test.fasta| test.fasta
+---------|------|-----------
+test.fasta| ~/QSAP/example/test| nuc    
+ 2       | SWHAS104 | SWH  
+
+### Tips:
+
+## Prepare Metagenome raw reads list for gene abundance caculatation
+Metagenome raw reads list
+
+## Prepare your own gene abundance table list 
 
 # Usage  
 **` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h`**
@@ -44,25 +80,6 @@ Email: 2446378845\@qq.com.
  &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance table list. if `-A`, `--rawread` will not be allowed.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;The target columns should be named as "Name" and "Abundance".  
  &emsp;`-h`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Print help information.
- 
 
-# Before start
-## Software involved in this pipeline  
-1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods* 18, 366–368 (2021). [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
-2. **HMMER 3.3.2**: [DOI:](http:/)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
-3. **SeqKit 2.2.0**: 
-W Shen, S Le, Y Li\*, F Hu\*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).
-### Installation: 
-default: installed by conda.  
-if `-p` \[your/install/path/\]. 
-### notice:
-
-## Input files list
-Input file list is nessasery for QSAP. 
-
-## Metagenome raw reads list
-Metagenome raw reads list
-
-## Gene abundance table list
-
-
+## Note
+&ensp;This pipeline is distributed in the hope to achieve the aim of management of QS-related sequences in envrionment, but WITHOUT ANY WARRANTY. No other warranty is expressed or implied including warranties or merchantability and fitness for any particular purpose. This pipeline is only allowed to be used for non-commercial and academic purpose.
