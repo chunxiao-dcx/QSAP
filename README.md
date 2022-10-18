@@ -1,14 +1,15 @@
 # QSAP
-QSAP version 1.0  
-Author: DAI Chunxiao.  
-Email: 2446378845\@qq.com.
 
 # Introduction
-Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP is an automatic annotation pipeline for fast annotation and classification of QS-related sequences from sequencing data.**  
+**QSAP version 1.0**    
+&ensp;Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP is an automatic annotation pipeline for fast annotation and classification of QS-related sequences from sequencing data.** The [QSP database]()
+Author: DAI Chunxiao.  
+Email: 2446378845\@qq.com.  
 
+# Workflow
+![image](https://github.com/chunxiao-dcx/QSP/blob/main/QSAPpipeline.png)
 
 # Usage  
-
 **` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h`**
    
 **General options:**  
@@ -40,23 +41,27 @@ Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell
  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `--saloptions /--hardFilter /--recoverOrphans`.
 
 **Others:**  
- &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance table list. if `-A`, `--rawread` will not be allowed. The target columns should be named as "Name" and "Abundance".  
+ &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance table list. if `-A`, `--rawread` will not be allowed.  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;The target columns should be named as "Name" and "Abundance".  
  &emsp;`-h`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Print help information.
  
 
 # Before start
 ## Software involved in this pipeline  
-1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, \"Sensitive protein alignments at tree-of-life scale using DIAMOND\", *Nature Methods* 18, 366–368 (2021). [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
-2. HMMER 3.3.2: [DOI:](http://hmmer.org/)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
-3. Seqkit 2.2.0: [DOI:](http://hmmer.org/)&emsp;[Git-hub:](http://hmmer.org/).
+1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods* 18, 366–368 (2021). [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
+2. **HMMER 3.3.2**: [DOI:](http:/)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
+3. **SeqKit 2.2.0**: 
+W Shen, S Le, Y Li\*, F Hu\*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).
 ### Installation: 
 default: installed by conda.  
-if `-p` \[your/install/path/\].  
+if `-p` \[your/install/path/\]. 
 ### notice:
 
 ## Input files list
+Input file list is nessasery for QSAP. 
 
 ## Metagenome raw reads list
+Metagenome raw reads list
 
 ## Gene abundance table list
 
