@@ -7,7 +7,7 @@ Author: DAI Chunxiao.
 Email: 2446378845\@qq.com.  
 
 # Workflow
-![image](https://github.com/chunxiao-dcx/QSP/blob/main/QSAPpipeline.png)
+![image](https://github.com/chunxiao-dcx/QSAP/blob/main/QSAPpipeline.png)
 
 # Before start
 To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
