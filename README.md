@@ -2,19 +2,19 @@
 
 # Introduction
 **QSAP version 1.0**    
-&ensp;Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP** is an automatic annotation pipeline for fast annotation and classification of **QS-related sequences** from sequencing data. This pipeline is constructed based on 809721 protein sequences from the [QSP database](https://github.com/chunxiao-dcx/QSP).  
-Author: DAI Chunxiao.  
-Email: 2446378845\@qq.com.  
+&emsp;Quorum sensing (QS) is thought as an important process in bacterial cell-to-cell communication which coordinated population behaviors in the bacterial world. **QSAP** is an automatic annotation pipeline for fast annotation and classification of **QS-related sequences** from sequencing data. This pipeline is constructed based on 809721 protein sequences from the [QSP database](https://github.com/chunxiao-dcx/QSP).  
+&emsp;Author: DAI Chunxiao.  
+&emsp;Email: 2446378845\@qq.com.  
 
 # Workflow
 ![image](https://github.com/chunxiao-dcx/QSAP/blob/main/QSAPpipeline.png)
 
 # Before start
-To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
+&emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
 ### clone source code  
-`git clone https://github.com/chunxiao-dcx/QSAP.git`  
+&emsp;`git clone https://github.com/chunxiao-dcx/QSAP.git`  
 
-## involved Software 
+## Involved Software 
 ### Software:   
 1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
 2. **HMMER 3.3.2**: Potter SC, Luciani A, Eddy SR, Park Y, 
@@ -22,19 +22,20 @@ Lopez R, Finn RD,HMMER web server: 2018 update,*Nucleic Acids Res*.[DOI: 10.1093
 3. **SeqKit 2.2.0**: 
 W Shen, S Le, Y Li\*, F Hu\*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).
 ### notice:
-The copyrights of the involved software belong to their original developers.  
+&emsp;The copyrights of the involved software belong to their original developers, cite it correctly if use these softwares.   
+
 ### Installation:  
-**Default:**
-     Installed by conda, and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
-**if `-p \[your/install/path/\]`:**  
-
+**1. Default:**  
+     &emsp;Installed by conda, and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
+**2. If `-p \[your/install/path/\]`:**  
+     &emsp;Installed by conda, and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.   
 ##  Laguage used in QSAP
-QSAP is writed using Perl language, and used the following Module from [CPAN (Comprehensive Perl Archive Network)](www. cpan.org).
+QSAP is writed using Perl language, and used the following Module from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org).
 1. 
-## Prepare your input files list [necessary]
-Input file list is nessasery for QSAP. The list contained 
+## Prepare your input files list [Necessary]
+A input file list is nessasery for QSAP which contains the name of orignal sequences file and its path
 
-File|path| Character
+File|Path| Character
 ---------|-----------------------|------
 TM1.fasta|~/QSAP/example/test/nuc| nuc
 TM2.fasta|~/QSAP/example/test/nuc| nuc    
@@ -42,7 +43,7 @@ TP.fasta|~/QSAP/example/test/pro| pro
 
 ### Tips:
 
-## Prepare Metagenome raw reads list for gene abundance caculatation
+## Prepare Metagenome raw reads list for gene abundance caculatation [Optional]
 Metagenome raw reads list
 
 File name |Forward file|Forward file|Path
@@ -50,7 +51,23 @@ File name |Forward file|Forward file|Path
 TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
 TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
 
-## Prepare your own gene abundance table list 
+### Tips:
+
+## Prepare your own gene abundance table list [Optional]
+
+File|Gene abundance table
+----|-----------------------
+YM1|~/QSAP/example/GeneAbundance/YM1.sf
+YM2|~/QSAP/example/GeneAbundance/YM2.sf
+
+
+### Tips:
+Gene abundance table for each sample need contain the column "Name" and "abundance", for example:
+Name|Length|Abundance
+-----------|---|------
+k141_8534_1|330|66.23
+k141_502_1|123|18.22
+k141_1506_1|312|27.77
 
 # Usage  
 **` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h`**
@@ -87,6 +104,7 @@ TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair
  &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance table list. if `-A`, `--rawread` will not be allowed.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;The target columns should be named as "Name" and "Abundance".  
  &emsp;`-h`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Print help information.
+# Usage 
 
 ## Note
-&ensp;This pipeline is distributed in the hope to achieve the aim of management of QS-related sequences in envrionment, but WITHOUT ANY WARRANTY. No other warranty is expressed or implied including warranties or merchantability and fitness for any particular purpose. This pipeline is only allowed to be used for non-commercial and academic purpose.
+&emsp;This pipeline is distributed in the hope to achieve the aim of management of QS-related sequences in envrionment, but WITHOUT ANY WARRANTY. No other warranty is expressed or implied including warranties or merchantability and fitness for any particular purpose. This pipeline is only allowed to be used for non-commercial and academic purpose.
