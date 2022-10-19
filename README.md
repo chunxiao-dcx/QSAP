@@ -11,8 +11,9 @@ Email: 2446378845\@qq.com.
 
 # Before start
 To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
-### clone source code
-`git clone `
+### clone source code  
+`git clone https://github.com/chunxiao-dcx/QSAP.git`  
+
 ## involved Software 
 ### Software:   
 1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
@@ -33,15 +34,21 @@ QSAP is writed using Perl language, and used the following Module from [CPAN (Co
 ## Prepare your input files list [necessary]
 Input file list is nessasery for QSAP. The list contained 
 
-test.fasta |test.fasta| test.fasta
----------|------|-----------
-test.fasta| ~/QSAP/example/test| nuc    
- 2       | SWHAS104 | SWH  
+File|path| Character
+---------|-----------------------|------
+TM1.fasta|~/QSAP/example/test/nuc| nuc
+TM2.fasta|~/QSAP/example/test/nuc| nuc    
+TP.fasta|~/QSAP/example/test/pro| pro
 
 ### Tips:
 
 ## Prepare Metagenome raw reads list for gene abundance caculatation
 Metagenome raw reads list
+
+File name |Forward file|Forward file|Path
+---|-----------|-----------|-----------------------
+TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
+TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
 
 ## Prepare your own gene abundance table list 
 
