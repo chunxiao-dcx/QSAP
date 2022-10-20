@@ -23,6 +23,7 @@ my @qsg = ("AqdC","Clp","CqsA","CqsS","dCACHE","DGC","HdtS","Lactonase","LsrA","
 
 if($input{R}){
 	open IN_R,"<$input{R}";
+	readline IN_R;
 	while (<IN_R>){
 		###list
 		chomp;
@@ -60,6 +61,7 @@ if($input{R}){
 	}
 }elsif($input{A}){
 	open IN_AB,"<$input{A}";
+	readline IN_AB;
 	while(<IN_AB>){
 		###list;
 		chomp;

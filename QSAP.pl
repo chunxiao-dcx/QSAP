@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 use strict;
 
-#QSG_test_version  by dcx
+#QSG_1.0_version  by dcx
 use Data::Dumper;
 use Getopt::Long;
 use FindBin qw($Bin);
@@ -9,7 +9,7 @@ use FindBin qw($Bin);
 #Usage information
 my $Usage = <<USAGE;
 ########################
-QSAP_version_1.0
+QSAP_1.0_version
 This program is used for quorum sensing related genes prediction.
 Author: DAI Chunxiao.
 Email: 2446378845\@qq.com
@@ -20,9 +20,9 @@ General options:
 	--input(-i)	Input files list,necessary.
 	--output(-o)	Output files directory, default current directory.
 	--strategy(-s)	Softwares used for extrated QSGs, default use both hmmscan and diamond blastp, and keep the subset.
-	--rawread(-r) The metagenome raw reads list for salmon quant, if -r, Input files should be nucleotide sequences.
+	--rawread(-r)	The metagenome pair-end reads list for salmon quant, if -r, Input files should be nucleotide sequences.
 	--thread(-n)	Number of threads, default value is 2.
-	--path(-p)	Software install directory: default installed by conda, or set to /your/install/path/.
+	--path(-p)	Software install directory: default installed by conda, or set to /your/install/path/. The final "/" is nessasery.
 				\033[34mEXAMPLE:\033[0m [-p /home/soft_for_qsg/bin/].
 
 Diamond parameters:
@@ -45,7 +45,7 @@ Salmon parameters:
 				\033[34mEXAMPLE:\033[0m [--saloptions "/--hardFilter /--recoverOrphans"].
 
 Others:
-	-A		Gene abundance table list. if -A, --rawread will not be allowed. The target columns should be named as "Name" and "Abundance".
+	-A		Gene abundance tables list. if -A, --rawread will not be allowed. The target columns should be named as "Name" and "Abundance".
 	-h		Print help information.
 USAGE
 
@@ -91,6 +91,7 @@ if(($input eq "none")||($help==1)){
 	die "$Usage\n";
 }else{
 	open(IN,"<$input")|| die "\033[31;1mERROR:\033[0m Can not open the files list: $!\n";
+	readline IN;
 }
 unless($strategy eq "sub" || ($strategy eq "hmmscan") || ($strategy eq "diamond")){
 	die "\033[31;1mERROR:\033[0m"."-u [sub|union|hmmscan|diamond] Strategy used for aligned QSGs, default keep the subset.\n";
@@ -114,6 +115,7 @@ if(($rawread eq "none")&&($Abundance eq "none")){
 	die "\033[31;1mERROR:\033[0m if --rawread|-r, -A will not be allowed.";
 }elsif(!($Abundance eq "none")){
 	(open IN_AB,"<$Abundance")||die "\033[31;1mERROR:\033[0m Can not open Gene abundance table list: $!\n";
+	readline IN_AB;
 	while(<IN_AB>){
 		chomp;
 		my($name,$other) = (split /\t/,$_,2)[0,1];
@@ -129,6 +131,7 @@ if(($rawread eq "none")&&($Abundance eq "none")){
 	close IN_AB;
 }elsif(!($rawread eq "none")){
 	open (RAW,"<$rawread") || die "\033[31;1mERROR:\033[0m Can not open raw reads list: $!\n\n";
+	readline RAW;
 	while(<RAW>){
 		chomp;
 		$_=~ s/\r//g;
@@ -215,10 +218,10 @@ sub trans_to_nuc{
 	}
 	
 	if($fa eq "fasta"||$fa eq "fa"||$fa eq "ffn"||$fa eq "faa"||$fa eq "fna"){
-		$protein = "seqkit translate $file_path/$file_name -o $file_pro.pro.fasta";
+		$protein = "$soft_path"."seqkit translate $file_path/$file_name -o $file_pro.pro.fasta";
 	}elsif($fa eq "fastq"||$fa eq "fq"){
 	my $trans_fq_fa= "$format_path/$file_name_noch/$file_name_noch.fasta";
-	$protein = "$soft_path seqkit translate $trans_fq_fa -o $file_pro.pro.fasta\n";
+	$protein = "$soft_path"."seqkit translate $trans_fq_fa -o $file_pro.pro.fasta\n";
 	}else{
 		print "\033[31;1mERROR:\033[0m"."The file formate should be \".fa/fasta/fq/fastq\", \".gz\" format files will be identified automatic";
 		die "\033[31;1mERROR: $date\033[0m";
@@ -248,7 +251,7 @@ sub predict_QSG_hmmscan{
 	if($soft_path eq " "){
 		$HMM = "hmmscan -o $RESULT_hmm.txt --tblout $RESULT_hmm.tbl --noali --cpu $thread $HMMOPT $DB_hmm $file_path/$file_name";
 	}else{
-		$HMM = "$soft_path/hmmer/bin/hmmscan -o $RESULT_hmm.txt --tblout $RESULT_hmm.tbl --cpu $thread --noali $HMMOPT $DB_hmm $file_path/$file_name";
+		$HMM = "$soft_path"."hmmer/bin/hmmscan -o $RESULT_hmm.txt --tblout $RESULT_hmm.tbl --cpu $thread --noali $HMMOPT $DB_hmm $file_path/$file_name";
 	}
 	return $HMM;
 }
@@ -266,7 +269,7 @@ sub predict_QSG_diamond{
 	my $DB_dia = "$root_path/DB/QSG";
 	my $DIAOPT= join(" ",@Diaoptions);
 	$DIAOPT=~s/\/-/-/g;
-	my $DIA =  "$soft_path diamond blastp --db $DB_dia -q $file_path/$file_name -p $thread -o $RESULT_dia -f 6 --max-target-seqs 1 --id $identity $DIAOPT";
+	my $DIA =  "$soft_path"."diamond blastp --db $DB_dia -q $file_path/$file_name -p $thread -o $RESULT_dia -f 6 --max-target-seqs 1 --id $identity $DIAOPT";
 	return $DIA;
 }
 
@@ -281,10 +284,16 @@ sub salmon_abundance{
 	unless(-d $RESULT_saldir){
 		`mkdir $RESULT_saldir`;
 	}
-	my $index="$soft_path salmon index -t $file_path/$file_name -p $thread -k $Kmers -i $RESULT_saldir/index_$file_name_noch";
+	my $soft_path2
+	if($soft_path eq " "){
+		$soft_path2="$soft_path";
+	}else{
+		$soft_path2="$soft_path/salmon-1.8.0_linux_x86_64/bin/";
+	}
+	my $index="$soft_path2"."salmon index -t $file_path/$file_name -p $thread -k $Kmers -i $RESULT_saldir/index_$file_name_noch";
 	my $SALOPT= join(" ",@Saloption);
 	$SALOPT=~s/\/-/-/g;
-	my $quant= "$soft_path salmon quant --validateMappings -i $RESULT_saldir/index_$file_name_noch -l A -p $thread --meta -1 $rawpath/$f1 -2 $rawpath/$f2 -o $RESULT_saldir/$file_name_noch.quant $SALOPT";
+	my $quant= "$soft_path"."salmon quant --validateMappings -i $RESULT_saldir/index_$file_name_noch -l A -p $thread --meta -1 $rawpath/$f1 -2 $rawpath/$f2 -o $RESULT_saldir/$file_name_noch.quant $SALOPT";
 	my $SAL= "$index\n$quant\n";
 	return $SAL;
 }
