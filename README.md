@@ -10,7 +10,7 @@
 ![image](https://github.com/chunxiao-dcx/QSAP/blob/main/QSAPpipeline.png)
 
 # Before start
-## clone source code  
+## Clone source code  
 &emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.  
 &emsp;**`git clone https://github.com/chunxiao-dcx/QSAP.git`** 
 
@@ -50,8 +50,9 @@ Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and b
     wget http://eddylab.org/software/hmmer/hmmer.tar.gz
     tar zxf hmmer.tar.gz
     cd hmmer-3.3.2 
-    ./configure --prefix /your/install/path
+    ./configure --prefix /your/install/path/hmmer
     make
+    make install
     # Install SeqKit
     cd /your/install/path
     wget https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz
@@ -61,7 +62,7 @@ Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and b
     tar zxvf salmon-1.8.0_linux_x86_64.tar.gz
 
 ##  Language & Modules
-QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
+&emsp;QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
 1. [Getopt::Long](https://metacpan.org/pod/Getopt::Long)  
 2. [FindBin](https://metacpan.org/pod/FindBin)  
 3. [Data::Dumper](https://metacpan.org/pod/Data::Dumper)  
@@ -69,36 +70,40 @@ QSAP is writed using Perl language, and used the following Modules from [CPAN \(
 5. [List::Util](https://metacpan.org/pod/List::Util) 
 
 ## Prepare your input files list [Necessary]
-A input file list is nessasery for QSAP which contains the name of orignal sequences file and its path. the character, "nuc" means nucleotide sequence, "pro"  means protein sequence.
+&emsp;A input file list is nessasery for QSAP which contain the name of orignal sequences file, its pathway and its character. The files need to be FASTA/Q format containing nucleotide sequences ("nuc") or protein sequences("pro"). The input file list looks like this:
 
-File|Path| Character
+File|Pathway| nuc/pro
 ---------|-----------------------|------
 TM1.fasta|~/QSAP/example/test/nuc| nuc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 TM2.fasta|~/QSAP/example/test/nuc| nuc    
 TP.fasta|~/QSAP/example/test/pro| pro
 
 ### Tips:
+&emsp;The pepiline will report error when exist extra points with no meaning of format in file names. For example: "TM1.fasta" is ok, "TM1.1.fasta" is wrong.
 
-## Prepare Metagenome raw reads list for gene abundance caculatation [Optional]
-QSAP also pair-ends reads left and right raw reads 
+## Prepare pair-end reads list for gene abundance estimation [Optional]
+&emsp;QSAP also provides a method of gene abundance estimation using [Salmon](https://github.com/COMBINE-lab/salmon). if `-r`, pair-end reads are needed. And the pair-end reads list looks like this: 
 
-File name |Left reads|right reads|Path
+File name |Left reads|Right reads|Path
 ---|-----------|-----------|-----------------------
 TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
 TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
-
 ### Tips:
+"File name" in this table need to be corresponded to the files in the input files list
+for example:
+File <input files list>|TM1.fasta
+File name <pair-end reads list>|TM1
 
-## Prepare your own gene abundance table list [Optional]
-
-File|Gene abundance table
+## Prepare your own gene abundance tables list [Optional]
+You can also provide own gene abundance tables for merge the gene abundance . The gene abundance tables list looks like this:
+File name|Gene abundance table
 ----|-----------------------
 YM1|~/QSAP/example/GeneAbundance/YM1.sf
 YM2|~/QSAP/example/GeneAbundance/YM2.sf
 
-
 ### Tips:
-Gene abundance table for each sample need contain the column "Name" and "abundance", for example:
+Same as the pair-end reads list, file names in gene abundance tables list need to be corresponded to the files in the input files list. Gene abundance table for each sample need contain the column "Name" and "abundance", and QSAP will automatic merge the gene abunance and the alignment result. For example:
+
 Name|Length|Abundance
 -----------|---|------
 k141_8534_1|330|66.23
@@ -106,7 +111,7 @@ k141_502_1|123|18.22
 k141_1506_1|312|27.77
 
 # Usage  
-**` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <raw reads list> -n <2.0> -p [/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance table list> -h`**
+**` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <Pair-end reads list> -n <2.0> -p [/your/install/path] -d <0.50> -G -k <21> -A <Gene abundance tables> -h`**
    
 **General options:**  
 &emsp;`--input(-i)` &emsp;&emsp;Input files list,necessary.  
@@ -114,7 +119,7 @@ k141_1506_1|312|27.77
 &emsp;`--strategy(-s)`&ensp; Softwares used for extrated QSGs, default use both hmmscan and diamond blastp, and keep the subset.  
 &emsp;`--rawread(-r)`&ensp;&ensp; The metagenome raw reads list for salmon quant, if `-r`, Input files should be nucleotide sequences.   
 &emsp;`--thread(-n)`&emsp;&ensp; Number of threads, default value is 2.  
-&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path/.  
+&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `-p /home/soft_for_qsap/bin/`.  
 
 **Diamond parameters:**  
@@ -141,7 +146,7 @@ k141_1506_1|312|27.77
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;The target columns should be named as "Name" and "Abundance".  
  &emsp;`-h`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Print help information.
 
-# 
+
 
 # Note
 &emsp;This pipeline is distributed in the hope to achieve the aim of management of QS-related sequences in envrionment, but WITHOUT ANY WARRANTY. No other warranty is expressed or implied including warranties or merchantability and fitness for any particular purpose. This pipeline is only allowed to be used for non-commercial and academic purpose.
