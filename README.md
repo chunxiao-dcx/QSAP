@@ -83,7 +83,7 @@ TP.fasta|~/QSAP/example/test/pro| pro
 &emsp;The pepiline will report error when exist extra points with no meaning of format in file names. For example: "TM1.fasta" is ok, "TM1.1.fasta" is wrong.
 
 ## Prepare pair-end reads list for gene abundance estimation [Optional]
-&emsp;QSAP also provides a method of gene abundance estimation using [Salmon](https://github.com/COMBINE-lab/salmon). if `-r`, nucleotide sequences and pair-end reads are needed. And the pair-end reads list looks like this: 
+&emsp;QSAP also provides a method of gene abundance estimation using TPM through  [Salmon](https://github.com/COMBINE-lab/salmon). if `-r`, nucleotide sequences and pair-end reads are needed. And the pair-end reads list looks like this: 
 
 File name |Left reads|Right reads|Path
 ---|-----------|-----------|-----------------------
@@ -114,7 +114,7 @@ k141_502_1|123|18.22
 k141_1506_1|312|27.77
 
 # Usage  
-**` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <Pair-end reads list> -n <2.0> -p [/your/install/path] -d <0.50> -G -k <21> -A <Gene abundance tables> -h`**
+**` perl QSAP.pl -i <Input files list> -o <Output dir> -s [sub|union|hmmscan|diamond] -r <Pair-end reads list> -n <2.0> -p [/your/install/path/] -d <0.50> -G -k <21> -A <Gene abundance tables list> -h`**
    
 **General options:**  
 &emsp;`--input(-i)` &emsp;&emsp;Input files list,necessary.  
@@ -122,7 +122,7 @@ k141_1506_1|312|27.77
 &emsp;`--strategy(-s)`&ensp; Softwares used for extrated QSGs, default use both hmmscan and diamond blastp, and keep the subset.  
 &emsp;`--rawread(-r)`&ensp;&ensp; The metagenome raw reads list for salmon quant, if `-r`, Input files should be nucleotide sequences.   
 &emsp;`--thread(-n)`&emsp;&ensp; Number of threads, default value is 2.  
-&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path/.  
+&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path/. If `-p \[your/install/path/\]`, the final "/" is nessasery.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `-p /home/soft_for_qsap/bin/`.  
 
 **Diamond parameters:**  
@@ -145,11 +145,12 @@ k141_1506_1|312|27.77
  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `--saloptions /--hardFilter /--recoverOrphans`.
 
 **Others:**  
- &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance table list. if `-A`, `--rawread` will not be allowed.  
+ &emsp;`-A` &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Gene abundance tables list. if `-A`, `--rawread` will not be allowed.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;The target columns should be named as "Name" and "Abundance".  
  &emsp;`-h`&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;Print help information.
 
-
+# Results
+For each sample, the alignment result will store in `Output dir/outputs`. If `-r` or `-A`, the gene abundance estimation results for each QS-related genes will store in `Output dir/merge_abundance.txt`.  
 
 # Note
 &emsp;This pipeline is distributed in the hope to achieve the aim of management of QS-related sequences in envrionment, but WITHOUT ANY WARRANTY. No other warranty is expressed or implied including warranties or merchantability and fitness for any particular purpose. This pipeline is only allowed to be used for non-commercial and academic purpose.
