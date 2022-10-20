@@ -11,24 +11,34 @@
 
 # Before start
 ## clone source code  
-&emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
+&emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.  
 &emsp;**`git clone https://github.com/chunxiao-dcx/QSAP.git`** 
 
 ## Involved Software 
-1. **Diamond v2.0.15.153**: Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
-2. **HMMER 3.3.2**: Potter SC, Luciani A, Eddy SR, Park Y, 
-Lopez R, Finn RD,HMMER web server: 2018 update,*Nucleic Acids Res*.[DOI: 10.1093/nar/gky448](http://doi.org/10.1093/nar/gky448)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
+1. **Diamond v2.0.15.153**: 
+Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
+2. **HMMER 3.3.2**: 
+Potter SC, Luciani A, Eddy SR, Park Y, Lopez R, Finn RD,HMMER web server: 2018 update,*Nucleic Acids Res*.[DOI: 10.1093/nar/gky448](http://doi.org/10.1093/nar/gky448)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
 3. **SeqKit 2.2.0**: 
-W Shen, S Le, Y Li\*, F Hu\*. SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation. *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).  
-4. **Salmon**:[]()[Git-hub:https://github.com/COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon)
+Shen W, Le S, Li Y, Hu F, SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation, *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).  
+4. **Salmon**: 
+Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and bias-aware quantification of transcript expression, *Nature Methods*. [DOI: 10.1038/nmeth.4197](https://doi.org/10.1038/nmeth.4197)&emsp;[Git-hub:https://github.com/COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon)
 
 ### notice:
-&emsp;The copyrights of the involved software belong to their original developers, please cite orrectly if they are integral to your study.  
+&emsp;The copyrights of the involved software belong to their original developers, please cite orrectly if they are integral to your study.
+  
 ### Installation:  
 **1. Default:**  
-     &emsp;Installed by conda, and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
+     &emsp;Install by conda. and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
 **2. If `-p \[your/install/path/\]`:**  
-     &emsp;Installed in specified , and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.   
+     &emsp;Install in the specified folder. The script.
+For example:    
+```
+mkdir -p ~/software
+#install Diamond v2.0.15.153
+wget 
+
+```
 
 ##  Laguage used in QSAP
 QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
@@ -52,7 +62,7 @@ TP.fasta|~/QSAP/example/test/pro| pro
 ## Prepare Metagenome raw reads list for gene abundance caculatation [Optional]
 QSAP also pair-ends reads left and right raw reads 
 
-File name |Forward file|Forward file|Path
+File name |Left reads|right reads|Path
 ---|-----------|-----------|-----------------------
 TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
 TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
