@@ -90,10 +90,11 @@ TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
 TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
 ### Tips:
 "File name" in this table need to be corresponded to the files in the input files list
-for example:  
+for example: 
+Column name|content 
 ---------------------------|--------
-File \<input files list\>:|TM1.fasta
-File name \<pair-end reads list\>:|TM1
+File \<input files list\>|TM1.fasta
+File name \<pair-end reads list\>|TM1
 
 ## Prepare your own gene abundance tables list [Optional]
 You can also provide own gene abundance tables for merge the gene abundance . The gene abundance tables list looks like this:
