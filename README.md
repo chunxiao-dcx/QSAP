@@ -82,7 +82,7 @@ TP.fasta|~/QSAP/example/test/pro| pro
 &emsp;The pepiline will report error when exist extra points with no meaning of format in file names. For example: "TM1.fasta" is ok, "TM1.1.fasta" is wrong.
 
 ## Prepare pair-end reads list for gene abundance estimation [Optional]
-&emsp;QSAP also provides a method of gene abundance estimation using [Salmon](https://github.com/COMBINE-lab/salmon). if `-r`, pair-end reads are needed. And the pair-end reads list looks like this: 
+&emsp;QSAP also provides a method of gene abundance estimation using [Salmon](https://github.com/COMBINE-lab/salmon). if `-r`, nucleotide sequences and pair-end reads are needed. And the pair-end reads list looks like this: 
 
 File name |Left reads|Right reads|Path
 ---|-----------|-----------|-----------------------
@@ -90,9 +90,10 @@ TM1|TM1_1.fq.gz|TM1_2.fq.gz|~/QSAP/example/testpair
 TM2|TM2_1.fq.gz|TM2_2.fq.gz|~/QSAP/example/testpair  
 ### Tips:
 "File name" in this table need to be corresponded to the files in the input files list
-for example:
-File <input files list>|TM1.fasta
-File name <pair-end reads list>|TM1
+for example:  
+---------------------------|--------
+File \<input files list\>:|TM1.fasta
+File name \<pair-end reads list\>:|TM1
 
 ## Prepare your own gene abundance tables list [Optional]
 You can also provide own gene abundance tables for merge the gene abundance . The gene abundance tables list looks like this:
