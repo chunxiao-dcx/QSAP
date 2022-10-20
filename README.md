@@ -15,13 +15,13 @@
 &emsp;**`git clone https://github.com/chunxiao-dcx/QSAP.git`** 
 
 ## Involved Software 
-1. **Diamond v2.0.15.153**: 
+1. **Diamond v2.0.15**: 
 Buchfink B, Reuter K, Drost HG, Sensitive protein alignments at tree-of-life scale using DIAMOND, *Nature Methods*. [DOI: 10.1038/s41592-021-01101-x](https://doi.org/10.1038/s41592-021-01101-x)&emsp;[Git-hub: https://github.com/bbuchfink/diamond](https://github.com/bbuchfink/diamond).  
 2. **HMMER 3.3.2**: 
 Potter SC, Luciani A, Eddy SR, Park Y, Lopez R, Finn RD,HMMER web server: 2018 update,*Nucleic Acids Res*.[DOI: 10.1093/nar/gky448](http://doi.org/10.1093/nar/gky448)&emsp;[Git-hub:https://github.com/EddyRivasLab/hmmer](https://github.com/EddyRivasLab/hmmer).  
 3. **SeqKit 2.2.0**: 
 Shen W, Le S, Li Y, Hu F, SeqKit: a cross-platform and ultrafast toolkit for FASTA/Q file manipulation, *PLOS ONE*. [DOI: 10.1371/journal.pone.0163962](https://doi.org/10.1371/journal.pone.0163962)&emsp;[Git-hub:https://github.com/shenwei356/seqkit](https://github.com/shenwei356/seqkit).  
-4. **Salmon**: 
+4. **Salmon 1.8.0**:
 Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and bias-aware quantification of transcript expression, *Nature Methods*. [DOI: 10.1038/nmeth.4197](https://doi.org/10.1038/nmeth.4197)&emsp;[Git-hub:https://github.com/COMBINE-lab/salmon](https://github.com/COMBINE-lab/salmon)
 
 ### notice:
@@ -29,18 +29,38 @@ Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and b
   
 ### Installation:  
 **1. Default:**  
-     &emsp;Install by conda. and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
+&emsp;Install by conda. and the script will Using these software directly under conda environment.The user of this pipeline should follow the guideline and regulations of these software.  
+    
+    conda create -n software  
+    conda activate software
+    conda install diamond=2.0.15
+    conda install HMMER=3.3.2
+    conda install -c bioconda seqkit=2.3.1
+    conda install Salmon=1.8.0
+
 **2. If `-p \[your/install/path/\]`:**  
-     &emsp;Install in the specified folder. The script.
-For example:    
-```
-mkdir -p ~/software
-#install Diamond v2.0.15.153
-wget 
+&emsp;To install in the specified folder: 
 
-```
+    mkdir -p /your/install/path
+    cd /your/install/path
+    # Install Diamond
+    wget https://github.com/bbuchfink/diamond/releases/download/v2.0.15/diamond-linux64.tar.gz
+    tar xzf diamond-linux64.tar.gz
+    # Install HMMER
+    wget http://eddylab.org/software/hmmer/hmmer.tar.gz
+    tar zxf hmmer.tar.gz
+    cd hmmer-3.3.2 
+    ./configure --prefix /your/install/path
+    make
+    # Install SeqKit
+    cd /your/install/path
+    wget https://github.com/shenwei356/seqkit/releases/download/v2.3.1/seqkit_linux_amd64.tar.gz
+    tar zxvf seqkit_linux_amd64.tar.gz
+    # Install Salmon
+    wget https://github.com/COMBINE-lab/salmon/releases/download/v1.8.0/salmon-1.8.0_linux_x86_64.tar.gz
+    tar zxvf salmon-1.8.0_linux_x86_64.tar.gz
 
-##  Laguage used in QSAP
+##  Language & Modules
 QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
 1. [Getopt::Long](https://metacpan.org/pod/Getopt::Long)  
 2. [FindBin](https://metacpan.org/pod/FindBin)  
@@ -53,7 +73,7 @@ A input file list is nessasery for QSAP which contains the name of orignal seque
 
 File|Path| Character
 ---------|-----------------------|------
-TM1.fasta|~/QSAP/example/test/nuc| nuc
+TM1.fasta|~/QSAP/example/test/nuc| nuc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 TM2.fasta|~/QSAP/example/test/nuc| nuc    
 TP.fasta|~/QSAP/example/test/pro| pro
 
