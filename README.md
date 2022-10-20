@@ -65,6 +65,7 @@ In `-p \[your/install/path/\]`, the final "/" is nessasery.
 ##  Language & Modules
 &emsp;QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
 1. [Getopt::Long](https://metacpan.org/pod/Getopt::Long)  
+2. [Getopt::Std](https://metacpan.org/pod/Getopt::Std)
 2. [FindBin](https://metacpan.org/pod/FindBin)  
 3. [Data::Dumper](https://metacpan.org/pod/Data::Dumper)  
 4. [Array::Utils](https://metacpan.org/pod/Array::Utils)  
