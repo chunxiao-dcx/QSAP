@@ -41,7 +41,7 @@ Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and b
 **2. If `-p \[your/install/path/\]`:**  
 &emsp;To install in the specified folder: 
 
-    mkdir -p /your/install/path
+    mkdir -p /your/install/path/
     cd /your/install/path
     # Install Diamond
     wget https://github.com/bbuchfink/diamond/releases/download/v2.0.15/diamond-linux64.tar.gz
@@ -60,7 +60,8 @@ Patro R, Duggal G, Love MI, Irizarry RA, Kingsford C, Salmon provides fast and b
     # Install Salmon
     wget https://github.com/COMBINE-lab/salmon/releases/download/v1.8.0/salmon-1.8.0_linux_x86_64.tar.gz
     tar zxvf salmon-1.8.0_linux_x86_64.tar.gz
-
+### Tips:
+In `-p \[your/install/path/\]`, the final "/" is nessasery.
 ##  Language & Modules
 &emsp;QSAP is writed using Perl language, and used the following Modules from [CPAN \(Comprehensive Perl Archive Network\)](www.cpan.org). Before start, the Perl and modules need to be installed correctly following the guideline.  
 1. [Getopt::Long](https://metacpan.org/pod/Getopt::Long)  
@@ -121,7 +122,7 @@ k141_1506_1|312|27.77
 &emsp;`--strategy(-s)`&ensp; Softwares used for extrated QSGs, default use both hmmscan and diamond blastp, and keep the subset.  
 &emsp;`--rawread(-r)`&ensp;&ensp; The metagenome raw reads list for salmon quant, if `-r`, Input files should be nucleotide sequences.   
 &emsp;`--thread(-n)`&emsp;&ensp; Number of threads, default value is 2.  
-&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path.  
+&emsp;`--path(-p)`&emsp;&ensp;&emsp; Software install directory: Default installed by conda, or set to /your/install/path/.  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;EXAMPLE: `-p /home/soft_for_qsap/bin/`.  
 
 **Diamond parameters:**  
