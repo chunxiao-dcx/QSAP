@@ -284,7 +284,7 @@ sub salmon_abundance{
 	unless(-d $RESULT_saldir){
 		`mkdir $RESULT_saldir`;
 	}
-	my $soft_path2
+	my $soft_path2;
 	if($soft_path eq " "){
 		$soft_path2="$soft_path";
 	}else{
