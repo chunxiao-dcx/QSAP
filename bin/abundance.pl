@@ -23,9 +23,9 @@ my @qsg = ("AqdC","Clp","CqsA","CqsS","dCACHE","DGC","HdtS","Lactonase","LsrA","
 
 if($input{R}){
 	open IN_R,"<$input{R}";
-	readline IN_R;
 	while (<IN_R>){
 		###list
+		our $firstline2th = readline IN_R;
 		chomp;
 		my($name,$others) = (split /\t/,$_,2)[0,1];
 		push @list,$name;
@@ -61,7 +61,6 @@ if($input{R}){
 	}
 }elsif($input{A}){
 	open IN_AB,"<$input{A}";
-	readline IN_AB;
 	while(<IN_AB>){
 		###list;
 		chomp;

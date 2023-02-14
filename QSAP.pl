@@ -58,7 +58,7 @@ $date =~ s/\s/\_/g;
 my ($help,$GA)=(0,1);
 my ($hmmE,$hmmT,$hmmdomE,$hmmdomT)=(20,1e-5,20,1e-5);
 my $thread = 2;
-my $identity = 0.50;
+my $identity = 50;
 my $input= "none";
 my $rawread = "none";
 my $output = "$root_path/QSG_output_$date";
@@ -96,10 +96,10 @@ if(($input eq "none")||($help==1)){
 unless($strategy eq "sub" || ($strategy eq "hmmscan") || ($strategy eq "diamond")){
 	die "\033[31;1mERROR:\033[0m"."-u [sub|union|hmmscan|diamond] Strategy used for aligned QSGs, default keep the subset.\n";
 }
-if((($GA==1)&&($Hmmoptions[0] eq ""))||(($GA==1)&&(@Hmmoptions))){
+if(($GA==1)&&(@Hmmoptions)){
 	die "\033[31;1mERROR:\033[0m"."if --hmmscanopt, -G will not be allowed.";
 }
-print "@Hmmoptions******\n";
+#print "@Hmmoptions******\n";
 unless(-d $output){
 	`mkdir $output`;
 }
@@ -162,6 +162,7 @@ while(<IN>){
 	my ($file_name_noch,$fa,$gz) = (split /\./,$name,3)[0,1,2];
 	push @filess, $file_name_noch;
 	$character =~ s/\r//g;
+	#print "$character";
 	my $pathway_ori = "";
 	my $name_ori = "";
 	#pro or nuc
@@ -324,7 +325,7 @@ if(($rawread eq "none")&&($Abundance eq "none")){
 	$abun_merge= "perl $bin_path/abundance.pl -u $strategy -o $output -R $rawread";
 	system ($abun_merge);
 }
-#print "$abun_merge";
+print "$abun_merge";
 #merge samples 
 ##########################################################################
 #5. Finsh;

@@ -1,0 +1,3 @@
+File	Pathway	nuc/pro
+SRR18502803.fasta	/home/pfc/daichunxiao/dcx-database/testdata/sea/trim/CONTIGS-50	nuc
+SRR18502801.fasta	/home/pfc/daichunxiao/dcx-database/testdata/sea/trim/CONTIGS-50	nuc
