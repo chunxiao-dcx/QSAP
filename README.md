@@ -10,8 +10,9 @@
 ![image](https://github.com/chunxiao-dcx/QSAP/blob/main/QSAPpipeline.png)
 
 # Before start
-## Clone source code  
-&emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.  
+## Clone source code 
+&emsp;To run QSAP, users should download the QSAP source code into local computer system (Unix/Linux), and installed the software involved in QSAP.
+
 &emsp;**`git clone https://github.com/chunxiao-dcx/QSAP.git`** 
 
 ## Involved Software 
@@ -70,14 +71,19 @@ In `-p \[your/install/path/\]`, the final "/" is nessasery.
 3. [Data::Dumper](https://metacpan.org/pod/Data::Dumper)  
 4. [Array::Utils](https://metacpan.org/pod/Array::Utils)  
 5. [List::Util](https://metacpan.org/pod/List::Util) 
+## Database prepare
+&emsp;diamond reference file prepare. 
+&emsp;**`git lfs`** 
+&emsp;**`cd QSAP/DB && unzip QSP_pro.fasta.zip`** 
+&emsp;**`diamond makedb --in QSAP/DB/QSP_pro.fasta -d QSAP/DB/QSP`** or **` your/install/path/diamond makedb --in QSAP/DB/QSP_pro.fasta -d QSAP/DB/QSP`**
 
 ## Prepare your input files list [Necessary]
 &emsp;A input file list is nessasery for QSAP which contain the name of orignal sequences file, its pathway and its character. The files need to be FASTA/Q format containing nucleotide sequences ("nuc") or protein sequences("pro"). The input file list looks like this:
 
 File|Pathway| nuc/pro
 ---------|-----------------------|------
-TM1.fasta|~/QSAP/example/test/nuc| nuc                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
-TM2.fasta|~/QSAP/example/test/nuc| nuc    
+TM1.fasta|~/QSAP/example/test/nuc| nuc
+TM2.fasta|~/QSAP/example/test/nuc| nuc
 TP.fasta|~/QSAP/example/test/pro| pro
 
 ### Tips:

@@ -267,7 +267,7 @@ sub predict_QSG_diamond{
 		`mkdir $RESULT_diadir`;
 	}
 	my $RESULT_dia = "$RESULT_diadir/$file_name_noch.txt";
-	my $DB_dia = "$root_path/DB/QSG";
+	my $DB_dia = "$root_path/DB/QSP";
 	my $DIAOPT= join(" ",@Diaoptions);
 	$DIAOPT=~s/\/-/-/g;
 	my $DIA =  "$soft_path"."diamond blastp --db $DB_dia -q $file_path/$file_name -p $thread -o $RESULT_dia -f 6 --max-target-seqs 1 --id $identity $DIAOPT";
