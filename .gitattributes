@@ -1,1 +1,2 @@
 *.bz2 filter=lfs diff=lfs merge=lfs -text
+DB/QSP_pro.fasta.zip filter=lfs diff=lfs merge=lfs -text
