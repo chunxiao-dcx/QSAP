@@ -74,7 +74,7 @@ In `-p \[your/install/path/\]`, the final "/" is nessasery.
 ## Database prepare
 &emsp;diamond reference file prepare. 
 &emsp;**`cd QSAP/DB && tar -jxvf QSP_pro.fasta.bz2`** 
-&emsp;**`diamond makedb --in QSAP/DB/QSP_pro_0.9.fasta -d QSAP/DB/QSP`** or **` your/install/path/diamond makedb --in QSAP/DB/QSP_pro_0.9.fasta -d QSAP/DB/QSP`**
+&emsp;**`diamond makedb --in QSP_pro_0.9.fasta -d QSP`** or **` your/install/path/diamond makedb --in QSP_pro_0.9.fasta -d QSP`**
 
 ## Prepare your input files list [Necessary]
 &emsp;A input file list is nessasery for QSAP which contain the name of orignal sequences file, its pathway and its character. The files need to be FASTA/Q format containing nucleotide sequences ("nuc") or protein sequences("pro"). The input file list looks like this:
