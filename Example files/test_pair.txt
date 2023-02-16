@@ -1,0 +1,3 @@
+File name	Left reads	Right reads	Path
+test	test_1.fq.gz	test_2.fq.gz	~QSAP/example/trim
+test2	test2_1.fq.gz	test2_2.fq.gz	~QSAP/example/trim
