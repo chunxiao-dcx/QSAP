@@ -313,6 +313,7 @@ print "########################\n\033[37;1m4 Cleansing the sample results.\033[0
 foreach my $na(@filess){
 	my $cleansing= "perl $bin_path/cleansing.pl -u $strategy -H $output/Hmmscanresults/$na.tbl -D $output/diamondresults/$na.txt -o $output -f $na -S $root_path/DB/QSP_subtype_information.txt";
 	system ($cleansing);
+	print "\n$cleansing\n";
 }
 
 my $abun_merge;
@@ -325,7 +326,8 @@ if(($rawread eq "none")&&($Abundance eq "none")){
 	$abun_merge= "perl $bin_path/abundance.pl -u $strategy -o $output -R $rawread";
 	system ($abun_merge);
 }
-print "$abun_merge";
+print "\n$abun_merge\n";
+
 #merge samples 
 ##########################################################################
 #5. Finsh;
