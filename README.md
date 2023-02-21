@@ -72,7 +72,8 @@ In `-p \[your/install/path/\]`, the final "/" is nessasery.
 4. [Array::Utils](https://metacpan.org/pod/Array::Utils)  
 5. [List::Util](https://metacpan.org/pod/List::Util) 
 ## Database prepare
-&emsp;diamond reference file prepare. 
+&emsp;Diamond reference file prepare. 
+&emsp;**`cd QSAP/DB && tar -jxvf QSP_pro.fasta.bz2`** 
 &emsp;**`cd QSAP/DB && tar -jxvf QSP_pro.fasta.bz2`** 
 &emsp;**`diamond makedb --in QSP_pro_0.9.fasta -d QSP`** or **` your/install/path/diamond makedb --in QSP_pro_0.9.fasta -d QSP`**
 
