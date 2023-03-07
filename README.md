@@ -73,9 +73,9 @@ In `-p \[your/install/path/\]`, the final "/" is nessasery.
 5. [List::Util](https://metacpan.org/pod/List::Util) 
 ## Database prepare
 &emsp;Diamond reference file prepare. 
-&emsp;**`cd QSAP/DB && git lfs clone https://github.com/DCX-qyy/QSP_protein.git`** 
-&emsp;**`unzip QSP_protein/QSP_pro.fasta.zip`** 
-&emsp;**`diamond makedb --in QSP_pro.fasta --db QSP`** or **` your/install/path/diamond makedb --in QSP_pro.fasta --db QSP`**
+&emsp;**`cd QSAP/DB && git lfs clone https://github.com/DCX-qyy/QSP_protein.git`**  
+&emsp;**`unzip QSP_protein/QSP_pro.fasta.zip`**  
+&emsp;**`diamond makedb --in QSP_pro.fasta --db QSP`** or **` your/install/path/diamond makedb --in QSP_pro.fasta --db QSP`**  
 
 ## Prepare your input files list [Necessary]
 &emsp;A input file list is nessasery for QSAP which contain the name of orignal sequences file, its pathway and its character. The files need to be FASTA/Q format containing nucleotide sequences ("nuc") or protein sequences("pro"). The input file list looks like this:
